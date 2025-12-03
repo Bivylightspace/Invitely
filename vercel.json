@@ -1,0 +1,15 @@
+ {
+  "builds": [
+    {
+      "src": "INVITATION.PY",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "main.py"
+    }
+  ]
+}
