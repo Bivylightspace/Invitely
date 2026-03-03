@@ -1,11 +1,23 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
+from api.utils.config import settings
+from api.db.db import engine 
+from api.db.base import Base
 
-app = FastAPI()
+def create_tables():         
+	Base.metadata.create_all(bind=engine)
+        
+
+def start_application():
+    app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
+    create_tables()
+    return app
+
+
+app = start_application()
+
 
 @app.get("/")
-def read_root():
-    return JSONResponse(content={"message": "Hello from FastAPI !"})
+def home():
+    return {"msg":"Hello FastAPI"}
 
-app.include_router(user.router, prefix="/api/v1")
-app.include_router(auth.router, prefix="/api/v1")
+

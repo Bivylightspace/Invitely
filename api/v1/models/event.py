@@ -1,13 +1,13 @@
 from enum import StrEnum
-from sqlalchemy import Column, Float, Integer, String, DateTime
-from sqlalchemy.ext.declarative import declarative_base 
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Float, Integer, String, DateTime 
+from sqlalchemy import declarative_base  
+from sqlalchemy.sql import func 
 import hashlib
-from .base import BaseModel
-from sqlalchemy.event import listens_for
+from db.base import Base
+from sqlalchemy.event import listens_for 
 
 
-class Event(BaseModel):
+class Event(Base):
     __tablename__  = 'events'
     name = Column(String, nullable=False)  
     datetime = Column(DateTime, nullable=False)

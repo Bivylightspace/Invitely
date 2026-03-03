@@ -1,1 +1,0 @@
-from .db_module import session_local, engine # type: ignore 

@@ -1,12 +1,10 @@
 from api.db.db import session_local, engine
-from api import model
-from datetime import datetime
-
-# seed.py
+import models # type: ignore
 from datetime import datetime
 
 
-model.Base.metadata.create_all(bind=engine)
+
+models.Base.metadata.create_all(bind=engine)
 
 
 def seed():
@@ -14,12 +12,11 @@ def seed():
 
     try:
         
-        db.query(model.Invitation).delete()
-        db.query(model.Event).delete()
-        db.query(model.User).delete()
+        db.query(models.Invitation).delete()
+        db.query(models.Event).delete()
+        db.query(models.User).delete()
         db.commit()
 
-        
         user = models.User(
             name="Stephen",
             email="stephen@gmail.com",
@@ -28,7 +25,7 @@ def seed():
         db.add(user)
         db.commit()
         db.refresh(user)
-
+ 
         # Create one event
         event = models.Event(
             title="Wedding Party",
