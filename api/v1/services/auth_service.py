@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from v1.model.user import User
-from schema.user_schema import UserCreate
+from v1.models.user import User
+from schemas.user_schema import UserCreate
 from utils.hashing import hash_password, verify_password
 from utils.jwt_handler import create_access_token
 

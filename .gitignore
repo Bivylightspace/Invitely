@@ -1,0 +1,65 @@
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+# See https://pyinstaller.org
+*.manifest
+*.spec
+upx/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environment
+# Ignore the virtual environment folder
+venv/
+env/
+.venv/
+.env/
+.env
+
+# FastAPI-specific or project-specific ignores
+# IDE-specific files (optional, can use .gitignore.io for specific IDEs like PyCharm, VS Code)
+.idea/
+.vscode/
+*.swp # vim temporary files
+.*.sw?
+
+# Testing
+.pytest_cache/
+.coverage*
+htmlcov/
+coverage.xml
+
+# Specific database files (e.g., SQLite in development)
+*.db
+test.db #
+
+# Log files
+log.txt #
