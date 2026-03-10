@@ -1,23 +1,41 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from db.database import get_db
-from v1.schemas.user_schema import UserCreate, UserLogin, UserResponse
-from v1.services.auth_service import register_user, login_user
-from api.utils.responses import success_response, fail_response, auth_response
 
+from db import get_db
+from models.user import User
+from schemas.user_schema import UserRegister, UserLogin, UserResponse
+from utils.hashing import hash_password, verify_password
 
-router = APIRouter(prefix="/auth", tags=["Authentication"])
+router = APIRouter(prefix="/auth", tags=["Auth"])
+
 
 @router.post("/register", response_model=UserResponse)
-def register(user: UserCreate, db: Session = Depends(get_db)):
-    new_user = register_user(user, db)
-    if not new_user:
-        raise HTTPException(status_code=400, detail="Username already taken")
+def register(user: UserRegister, db: Session = Depends(get_db)):
+
+    hashed_password = hash_password(user.password)
+
+    new_user = User(
+        username=user.username,
+        email=user.email,
+        password=hashed_password
+    )
+
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+
     return new_user
 
+
 @router.post("/login")
-def login(user: UserLogin, db: Session = Depends(get_db)):  
-    token = login_user(user.username, user.password, db)
-    if not token:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
-    return {"access_token": token, "token_type": "bearer"}
+def login(user: UserLogin, db: Session = Depends(get_db)):
+
+    db_user = db.query(User).filter(User.email == user.email).first()
+
+    if not db_user:
+        raise HTTPException(status_code=401, detail="Invalid email")
+
+    if not verify_password(user.password, db_user.password):
+        raise HTTPException(status_code=401, detail="Invalid password")
+
+    return {"message": "Login successful"}
