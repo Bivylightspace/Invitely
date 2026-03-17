@@ -57,7 +57,7 @@ else:
 async_session_factory = async_sessionmaker(
     bind=async_engine, expire_on_commit=False, class_=AsyncSession)
 
-
+Base = declarative_base()
 # **Legacy (Sync) Database Dependency**
 
 
