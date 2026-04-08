@@ -8,7 +8,7 @@ from api.v1.services.event import (
     create_event_service,
     get_user_events_service,
     delete_event_service
-)
+)                                              
 from utils.jwt_handler import get_current_user
 
 
