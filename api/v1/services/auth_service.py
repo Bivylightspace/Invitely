@@ -10,7 +10,7 @@ from api.utils.jwt_handler import create_access_token
 def register_user(user_data: UserCreate, db: Session) -> dict:
     # 1. Create the base User profile
     new_user = User(
-        name=user_data.name,
+        name=user_data.name,                                                        
         # phone=user_data.phone  # Add this if you added phone to your schema
     )
     

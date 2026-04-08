@@ -9,10 +9,6 @@ from api.utils.responses import success_response
 app = FastAPI()  
 app.include_router(api_version_one) 
 
-
-
-
-
 @app.get("/")
 def home():
     return {"message": "Hello from Invitely!"} 

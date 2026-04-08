@@ -4,10 +4,11 @@ from api.v1.models.base import Base
 
 if TYPE_CHECKING:
     from api.v1.models.auth_account import AuthAccount
+    from api.v1.models.event import Event
     
 
-class User(Base):
-    __tablename__ = "users"
+class User(Base):                      
+    __tablename__ = "users"  
        
     name: Mapped[str] = mapped_column(nullable=False)
     phone: Mapped[Optional[str]] = mapped_column(unique=True, nullable=True)
@@ -18,4 +19,4 @@ class User(Base):
     )
     
     # Relationship to Events (Placeholder based on your requirements)
-    # events: Mapped[List["Event"]] = relationship(back_populates="owner")
+    events: Mapped[List["Event"]] = relationship(back_populates="owner") 
