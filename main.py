@@ -15,7 +15,11 @@ app.include_router(api_version_one)
 
 @app.get("/")
 def home():
-    return {"message": "Hello from Invitely!"} 
+    return success_response(
+        status_code=200,
+        message="Hello from Invitely!",
+        data={"service": "Invitely API"}
+    ) 
 
 
 @app.get("/health")

@@ -7,7 +7,6 @@ from api.utils.responses import success_response, fail_response, auth_response
 
 auth_router = APIRouter(prefix="/auth", tags=["Authentication"])
 
-# HTTP Verb 
 @auth_router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):  
     new_user = register_user(user, db)
