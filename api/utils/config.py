@@ -26,6 +26,13 @@ class Settings(BaseSettings):
     JWT_REFRESH_TOKEN_EXPIRE_MINUTES: int = config(
         "JWT_REFRESH_TOKEN_EXPIRE_MINUTES", default=30)
 
+    # Supabase storage configuration
+    SUPABASE_URL: str = config("SUPABASE_URL", default="")
+    SUPABASE_KEY: str = config("SUPABASE_KEY", default="")
+    SUPABASE_SERVICE_KEY: str = config("SUPABASE_SERVICE_KEY", default="")
+    BUCKET_NAME: str = config("BUCKET_NAME", default="Invitations")
+    AVATAR_BUCKET_NAME: str = config("AVATAR_BUCKET_NAME", default="avatar")
+
     # Database configurations
     DB_HOST: str = config("DB_HOST", default="localhost")
     DB_PORT: int = config("DB_PORT", default=5432)
