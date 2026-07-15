@@ -40,6 +40,19 @@ jobs:
       - name: Compile Python
         run: python -m compileall . -q
 
+      - name: Start app and verify it boots
+        run: |
+          python -m uvicorn main:app --host 127.0.0.1 --port 8000 > /tmp/app.log 2>&1 &
+          APP_PID=$!
+          sleep 10
+          kill $APP_PID
+          if grep -q "Uvicorn running on" /tmp/app.log; then
+            echo "App started successfully"
+          else
+            cat /tmp/app.log
+            exit 1
+          fi
+
       - name: Create or update pull request to main
         if: github.ref == 'refs/heads/deployment'
         env:
