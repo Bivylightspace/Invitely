@@ -1,33 +1,18 @@
 from fastapi import Depends, FastAPI
 from fastapi.responses import JSONResponse
-<<<<<<< feat/createEvent
-from sqlalchemy.ext.asyncio import AsyncSession    
-from api.v1.routes import api_version_one    
+from sqlalchemy.ext.asyncio import AsyncSession
 from api.db.database import get_async_db, check_database_connection
 from api.utils.responses import success_response
 
- 
-app = FastAPI()  
-app.include_router(api_version_one) 
-=======
-from sqlalchemy.ext.asyncio import AsyncSession
-
-from api.db.database import check_database_connection, get_async_db
 from api.utils.responses import success_response
 from api.v1.routes import api_version_one
 
 app = FastAPI()
 app.include_router(api_version_one)
 
->>>>>>> dev
-
 @app.get("/")
 def home():
-    return success_response(
-        status_code=200,
-        message="Hello from Invitely!",
-        data={"service": "Invitely API"}
-    ) 
+    return {"message": "Hello from Invitely!"}
 
 
 @app.get("/health")
