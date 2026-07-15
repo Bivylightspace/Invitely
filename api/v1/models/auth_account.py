@@ -1,7 +1,13 @@
-from sqlalchemy import ForeignKey, String, CheckConstraint
+from typing import TYPE_CHECKING
+
+from sqlalchemy import CheckConstraint, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from api.v1.models.base import Base
-from api.v1.models.user import User
+
+if TYPE_CHECKING:
+    from api.v1.models.user import User
+
 
 class AuthAccount(Base):
     __tablename__ = "auth_accounts"
