@@ -15,4 +15,4 @@ class User(Base):
     )
     
     # Relationship to Events (Placeholder based on your requirements)
-    events: Mapped[List["Event"]] = relationship(back_populates="owner") 
+    events: Mapped[List["User"]] = relationship(back_populates="owner")

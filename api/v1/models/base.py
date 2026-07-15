@@ -1,7 +1,8 @@
-from datetime import datetime, timezone
-import uuid6  # Recommended for UUIDv7 support in Python
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from datetime import datetime
+
+import uuid6
 from sqlalchemy import DateTime, func
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 class Base(DeclarativeBase):
     # UUIDv7 is time-sortable, making it faster for DB indexing than UUIDv4
