@@ -1,55 +1,68 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-.pytest_cache/
-.pytest_cache
-.pytest_cache/*
-venv/
-.venv/
-ENV/
-env/
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
 .eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
 *.egg
-pip-wheel-metadata/
-htmlcov/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-.pytest_cache/
-.pyre/
-.mypy_cache/
-.dmypy.json
-dmypy.json
-.pytype/
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+upx/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Virtual environments
 venv/
-ENV/
 env/
 .venv/
+.env/
+.env
 
-# Editor directories and files
+# FastAPI / project-specific ignores
 .idea/
 .vscode/
 *.swp
 *.swo
-*~
-.DS_Store
-Thumbs.db
+.*.sw?
+*.tmp
+*.bak
 
-# FastAPI / Uvicorn / ASGI
+# Testing
+.pytest_cache/
+.coverage*
+htmlcov/
+coverage.xml
+
+# Database files
+*.db
+test.db
+
+# Logs
 *.log
-local_settings.py
-instance/
-.webassets-cache
+log.txt
 
 # Secrets and config
 .env
@@ -59,54 +72,6 @@ instance/
 *.key
 secret*
 
-# Database files
-*.sqlite3
-*.db
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-.cache
-
-# PyInstaller
-*.manifest
-*.spec
-
-# C extensions
-*.so
-
-# Distribution
-.eggs/
-*.egg
-*.egg-info/
-
-# Poetry
-poetry.lock
-
-# Celery
-celerybeat-schedule
-celerybeat.pid
-
-# JetBrains
-.idea/
-
-# Mac
+# Editor and OS files
 .DS_Store
-
-# Windows
 Thumbs.db
-
-# Local downloads or build artifacts
-*.pyc
-*~
-
-# Logs
-*.log
-
-# MyPy
-.mypy_cache/
-
-# Pylint
-pylint-report.txt
-pylint-global.txt
