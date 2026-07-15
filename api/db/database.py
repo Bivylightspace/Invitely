@@ -1,19 +1,19 @@
 from sqlalchemy import create_engine
-from sqlalchemy.future import select  
+from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
-from sqlalchemy.orm import sessionmaker, scoped_session, declarative_base 
+from sqlalchemy.orm import sessionmaker, scoped_session, declarative_base
 from api.utils.config import settings
-import os                            
-from urllib.parse import quote_plus  
+import os
+from urllib.parse import quote_plus
 
 # Inside your get_db_url function:
-DB_HOST = settings.DB_HOST 
-DB_PORT = settings.DB_PORT                
+DB_HOST = settings.DB_HOST
+DB_PORT = settings.DB_PORT
 DB_USER = settings.DB_USER
-DB_PASSWORD = quote_plus(settings.DB_PASSWORD)          
+DB_PASSWORD = quote_plus(settings.DB_PASSWORD)
 DB_NAME = settings.DB_NAME
 DB_TYPE = settings.DB_TYPE
-                              
+
 def get_db_url(test_mode: bool = False):
     if DB_TYPE == "sqlite" or test_mode or os.environ.get("TESTING"):
         BASE_PATH = "sqlite:///./test.db"
@@ -30,9 +30,9 @@ else:
     sync_engine = create_engine(
         get_db_url(),
         echo=settings.DB_ECHO,
-        pool_pre_ping=settings.DB_POOL_PRE_PING,  
+        pool_pre_ping=settings.DB_POOL_PRE_PING,
         pool_size=settings.DB_POOL_SIZE,
-        max_overflow=settings.DB_MAX_OVERFLOW, 
+        max_overflow=settings.DB_MAX_OVERFLOW,
     )
 
 SessionLocal = sessionmaker(
@@ -57,14 +57,14 @@ else:
 async_session_factory = async_sessionmaker(
     bind=async_engine, expire_on_commit=False, class_=AsyncSession)
 
-Base = declarative_base()
+
 # **Legacy (Sync) Database Dependency**
 
 
 def get_db():
     db = db_session()
     try:
-        yield db 
+        yield db
     finally:
         db.close()
 
@@ -73,7 +73,7 @@ def get_db():
 async def get_async_db():
     async with async_session_factory() as session:
         try:
-            yield session 
+            yield session
         finally:
             await session.close()
 
