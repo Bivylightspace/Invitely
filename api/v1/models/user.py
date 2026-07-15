@@ -14,10 +14,5 @@ class User(Base):
         back_populates="user", cascade="all, delete-orphan"
     )
     
-<<<<<<< feat/createEvent
     # Relationship to Events (Placeholder based on your requirements)
     events: Mapped[List["Event"]] = relationship(back_populates="owner") 
-=======
-    # Relationship to Events (Placeholder based on your requirements)
-    # events: Mapped[List["Event"]] = relationship(back_populates="owner")
->>>>>>> dev
