@@ -1,7 +1,5 @@
 import enum
-from pydantic import BaseModel, EmailStr, Field
 from typing import Annotated
-
 from pydantic import BaseModel, Field, EmailStr, ConfigDict, field_validator
 import re 
 
@@ -16,7 +14,7 @@ class UserCreate(BaseModel):
         description="User's real name. Allows letters, spaces, hyphens, and apostrophes."
     )
     
-    email: EmailStr
+    email: EmailStr             
     password:str = Field(
         min_length=8, 
         max_length=42,    
@@ -61,4 +59,4 @@ class UserResponse(BaseModel):
 class AuthProvider(str, enum.Enum):
     GOOGLE = "google"
     APPLE = "apple"
-    EMAIL = "email"  # Changed from 'local' to 'email' as requested
+    EMAIL = "email" 

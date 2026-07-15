@@ -68,7 +68,6 @@ def get_db():
     finally:
         db.close()
 
-# **New (Async) Database Dependency**
 
 
 async def get_async_db():
