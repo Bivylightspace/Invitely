@@ -1,15 +1,11 @@
 from datetime import datetime
+from typing import TYPE_CHECKING, List, Optional
+
+from sqlalchemy import DateTime, Enum, ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from api.v1.models.base import Base
 from api.v1.schemas.event import EventType, Plan
-from sqlalchemy import DateTime, ForeignKey, Text, Enum
-
-
-from typing import TYPE_CHECKING, List, Optional
-from sqlalchemy import ForeignKey, String, Text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from api.v1.models.base import Base
 
 if TYPE_CHECKING:
     from api.v1.models.user import User

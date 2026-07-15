@@ -1,6 +1,7 @@
 from enum import Enum
 
+
 class AttendeeType(str, Enum):
-    vip = "vip"
-    worker = "worker"
-    normal-guest = "normal-guest" 
+    VIP = "vip"
+    WORKER = "worker"
+    NORMAL_GUEST = "normal-guest" 
