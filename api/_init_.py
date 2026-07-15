@@ -1,1 +1,2 @@
-from .db_module import session_local, engine # type: ignore 
+# ruff: noqa: F401
+from .db_module import session_local, engine  # type: ignore

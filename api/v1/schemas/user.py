@@ -1,7 +1,7 @@
 import enum
-from typing import Annotated
-from pydantic import BaseModel, Field, EmailStr, ConfigDict, field_validator
-import re 
+import re
+
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
 class UserCreate(BaseModel):
     # Field constraints & metadata for Pydantic v2

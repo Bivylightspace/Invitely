@@ -5,8 +5,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from seed import Event, Invitation, User, seed
+# ruff: noqa: E402
 from api.db.db import session_local
+from seed import Event, Invitation, User, seed
 
 
 def test_seed_creates_expected_data():
