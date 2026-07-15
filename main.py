@@ -11,8 +11,12 @@ app.include_router(api_version_one)
 
 
 @app.get("/")
-def read_root():
-    return JSONResponse(content={"message": "Hello from FastAPI !"})
+def home():
+    return success_response(
+        status_code=200,
+        message="Hello from Invitely!",
+        data={"service": "Invitely API"}
+    ) 
 
 
 @app.get("/health")
