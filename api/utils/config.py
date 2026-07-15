@@ -7,7 +7,7 @@ from pydantic_settings import BaseSettings
 BASE_DIR = Path(__file__).resolve().parent
 
 
-class Settings(BaseSettings):
+class Settings(BaseSettings):   
     """Class to hold application's config values."""
     
     # Application configurations
@@ -71,6 +71,15 @@ class Settings(BaseSettings):
     GOOGLE_CONF_URL: str = config("GOOGLE_CONF_URL", default="")
     GOOGLE_REDIRECT_FRONTEND_URL: str = config(
         "GOOGLE_REDIRECT_FRONTEND_URL", default="")
+    
+    # WhatsApp Messaging Integration
+    WHATSAPP_ACCESS_TOKEN: str = config("WHATSAPP_ACCESS_TOKEN", default="")
+    WHATSAPP_PHONE_NUMBER_ID: int = config("WHATSAPP_PHONE_NUMBER_ID", default="")
+
+    @property
+    def WHATSAPP_BASE_URL(self) -> str:
+        return f"https://graph.facebook.com/v25.0/{self.WHATSAPP_PHONE_NUMBER_ID}/messages"
 
 
-settings = Settings()
+
+settings = Settings()   

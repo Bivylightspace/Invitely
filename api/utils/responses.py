@@ -1,24 +1,24 @@
 from fastapi.responses import JSONResponse
-from typing import Optional, Dict, Any
+from typing import Optional, Dict 
 
 
 def success_response(
 	status_code:int,
-	message: str,
+	message: str,               
 	data: Optional[dict] = None
 ) :
 
 	return JSONResponse( 
-		status_code=status_code,
+		status_code=status_code,   
 		content={
 			"status": "success",
-			"status_code": status_code,
+			"status_code": status_code,              
 			"message": message,
 			"data": data 
 			}
 		)
- 
-def auth_responses(
+                                         
+def auth_response(
 	 status_code: int,
 	 message: str,
 	 access_token: str,
@@ -43,7 +43,7 @@ def fail_response(
 	status_code: int,
 	message: str,
 	data: Optional[Dict] = None
-):
+):     
 	return JSONResponse(
 		status_code=status_code,
 		content={
