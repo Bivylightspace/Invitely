@@ -1,10 +1,12 @@
-from sqlalchemy import create_engine
-from sqlalchemy.future import select
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
-from sqlalchemy.orm import sessionmaker, scoped_session, declarative_base
-from api.utils.config import settings
 import os
 from urllib.parse import quote_plus
+
+from sqlalchemy import create_engine
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.future import select
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+from api.utils.config import settings
 
 # Inside your get_db_url function:
 DB_HOST = settings.DB_HOST

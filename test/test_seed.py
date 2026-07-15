@@ -1,20 +1,24 @@
-from seed import seed
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+# ruff: noqa: E402
 from api.db.db import session_local
-from api.v1.model import User, Event, Invitation 
+from seed import Event, Invitation, User, seed
 
 
 def test_seed_creates_expected_data():
-    
     seed()
 
     db = session_local()
-
     try:
         users = db.query(User).all()
         events = db.query(Event).all()
         invitations = db.query(Invitation).all()
 
-        # Assertions
         assert len(users) == 1
         assert users[0].email == "stephen@gmail.com"
 
@@ -22,6 +26,5 @@ def test_seed_creates_expected_data():
         assert events[0].title == "Wedding Party"
 
         assert len(invitations) == 5
-
     finally:
         db.close()
