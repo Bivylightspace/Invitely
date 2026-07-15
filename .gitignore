@@ -1,4 +1,3 @@
-# Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -27,7 +26,6 @@ wheels/
 MANIFEST
 
 # PyInstaller
-# See https://pyinstaller.org
 *.manifest
 *.spec
 upx/
@@ -36,20 +34,21 @@ upx/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Virtual environment
-# Ignore the virtual environment folder
+# Virtual environments
 venv/
 env/
 .venv/
 .env/
 .env
 
-# FastAPI-specific or project-specific ignores
-# IDE-specific files (optional, can use .gitignore.io for specific IDEs like PyCharm, VS Code)
+# FastAPI / project-specific ignores
 .idea/
 .vscode/
-*.swp # vim temporary files
+*.swp
+*.swo
 .*.sw?
+*.tmp
+*.bak
 
 # Testing
 .pytest_cache/
@@ -57,9 +56,22 @@ env/
 htmlcov/
 coverage.xml
 
-# Specific database files (e.g., SQLite in development)
+# Database files
 *.db
-test.db #
+test.db
 
-# Log files
-log.txt #
+# Logs
+*.log
+log.txt
+
+# Secrets and config
+.env
+.env.*
+*.env
+*.pem
+*.key
+secret*
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
