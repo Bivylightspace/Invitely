@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.pytest_cache
+.pytest_cache/*
+venv/
+.venv/
+ENV/
+env/
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+.pytest_cache/
+.pyre/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# FastAPI / Uvicorn / ASGI
+*.log
+local_settings.py
+instance/
+.webassets-cache
+
+# Secrets and config
+.env
+.env.*
+*.env
+*.pem
+*.key
+secret*
+
+# Database files
+*.sqlite3
+*.db
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+
+# PyInstaller
+*.manifest
+*.spec
+
+# C extensions
+*.so
+
+# Distribution
+.eggs/
+*.egg
+*.egg-info/
+
+# Poetry
+poetry.lock
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# JetBrains
+.idea/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Local downloads or build artifacts
+*.pyc
+*~
+
+# Logs
+*.log
+
+# MyPy
+.mypy_cache/
+
+# Pylint
+pylint-report.txt
+pylint-global.txt
