@@ -63,10 +63,10 @@ jobs:
           if [ -n "$PR_NUMBER" ]; then
             echo "Pull request already exists: #$PR_NUMBER"
           else
-            PR_NUMBER=$(gh pr create --base main --head deployment \
+            PR_URL=$(gh pr create --base main --head deployment \
               --title "Deploy deployment to main" \
-              --body "Automated deployment pull request from the deployment branch." \
-              --json number --jq '.number')
+              --body "Automated deployment pull request from the deployment branch.")
+            PR_NUMBER=$(echo "$PR_URL" | sed 's#.*/pull/##')
             echo "Created pull request #$PR_NUMBER"
           fi
           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
