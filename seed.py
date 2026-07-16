@@ -29,7 +29,9 @@ class Event(Base):
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
     owner = relationship("User", back_populates="events")
-    invitations = relationship("Invitation", back_populates="event", cascade="all, delete-orphan")
+    invitations = relationship(
+        "Invitation", back_populates="event", cascade="all, delete-orphan"
+    )
 
 
 class Invitation(Base):
@@ -76,7 +78,9 @@ def seed():
         db.refresh(event)
 
         invitations = [
-            Invitation(email=f"guest{i}@example.com", status="pending", event_id=event.id)
+            Invitation(
+                email=f"guest{i}@example.com", status="pending", event_id=event.id
+            )
             for i in range(1, 6)
         ]
 
