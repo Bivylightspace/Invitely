@@ -3,23 +3,24 @@ import re
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
+
 class UserCreate(BaseModel):
     # Field constraints & metadata for Pydantic v2
     model_config = ConfigDict(str_strip_whitespace=True)
 
     name: str = Field(
-        min_length=2, 
-        max_length=50, 
+        min_length=2,
+        max_length=50,
         pattern=r"^[A-Za-z\s'-]+$",
-        description="User's real name. Allows letters, spaces, hyphens, and apostrophes."
+        description="User's real name. Allows letters, spaces, hyphens, and apostrophes.",
     )
-    
-    email: EmailStr             
-    password:str = Field(
-        min_length=8, 
-        max_length=42,    
-        description="Must include uppercase, lowercase, number, and special character."
-    ) 
+
+    email: EmailStr
+    password: str = Field(
+        min_length=8,
+        max_length=42,
+        description="Must include uppercase, lowercase, number, and special character.",
+    )
 
     @field_validator("password")
     @classmethod
@@ -41,11 +42,12 @@ class UserCreate(BaseModel):
             raise ValueError("Password must contain a special character")
 
         return v
-    
+
 
 class UserLogin(BaseModel):
     email: str
     password: str
+
 
 class UserResponse(BaseModel):
     id: str
@@ -59,4 +61,4 @@ class UserResponse(BaseModel):
 class AuthProvider(str, enum.Enum):
     GOOGLE = "google"
     APPLE = "apple"
-    EMAIL = "email" 
+    EMAIL = "email"
