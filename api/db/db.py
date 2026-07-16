@@ -3,48 +3,9 @@ from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = "sqlite:///./api.db"
 
-engine = create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
-)
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
-session_local = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 # URL = os.getenv("https://quuvbchjhlseucxqqgcn.supabase.co")
@@ -53,8 +14,7 @@ session_local = sessionmaker(
 # supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
-
-# URL = "sqlite:///./invitation_app.db" 
+# URL = "sqlite:///./invitation_app.db"
 
 # engine = create_engine(URL, connect_args={"check_same_thread": False})
 # Session = sessionmaker(autocommit=True, autoflush=False, bind=engine)
@@ -62,7 +22,7 @@ session_local = sessionmaker(
 
 # def get_db():
 #     db = Session()
-#     try: 
+#     try:
 #         yield db
 #     finally:
 #         db.close()

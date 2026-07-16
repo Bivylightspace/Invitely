@@ -40,22 +40,40 @@ jobs:
       - name: Compile Python
         run: python -m compileall . -q
 
+      - name: Start app and verify it boots
+        run: |
+          python -m uvicorn main:app --host 127.0.0.1 --port 8000 > /tmp/app.log 2>&1 &
+          APP_PID=$!
+          sleep 10
+          kill $APP_PID
+          if grep -q "Uvicorn running on" /tmp/app.log; then
+            echo "App started successfully"
+          else
+            cat /tmp/app.log
+            exit 1
+          fi
+
       - name: Create or update pull request to main
+        id: pr
         if: github.ref == 'refs/heads/deployment'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if gh pr view --base main --head deployment >/dev/null 2>&1; then
-            echo "Pull request already exists."
+          PR_NUMBER=$(gh pr list --base main --head deployment --json number --jq '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            echo "Pull request already exists: #$PR_NUMBER"
           else
-            gh pr create --base main --head deployment \
+            PR_URL=$(gh pr create --base main --head deployment \
               --title "Deploy deployment to main" \
-              --body "Automated deployment pull request from the deployment branch."
+              --body "Automated deployment pull request from the deployment branch.")
+            PR_NUMBER=$(echo "$PR_URL" | sed 's#.*/pull/##')
+            echo "Created pull request #$PR_NUMBER"
           fi
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
 
       - name: Merge pull request into main
         if: github.ref == 'refs/heads/deployment'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr merge --squash --delete-branch --admin
+          gh pr merge "${{ steps.pr.outputs.pr_number }}" --squash --delete-branch --admin

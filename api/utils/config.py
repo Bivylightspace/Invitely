@@ -9,14 +9,14 @@ BASE_DIR = Path(__file__).resolve().parent
 
 class Settings(BaseSettings):
     """Class to hold application's config values."""
-    
+
     # Application configurations
     APP_NAME: str = config("APP_NAME", default="Invitey API")
     APP_VERSION: str = config("APP_VERSION", default="0.1.0")
     APP_DESCRIPTION: str = config("APP_DESCRIPTION", default="Invitey API")
     ENVIRONMENT: str = config("ENVIRONMENT", default="production")
     LOG_LEVEL: str = config("LOG_LEVEL", default="INFO")
-    
+
     # Security configurations
     JWT_SECRET_KEY: str = config("JWT_SECRET_KEY", default="")
     JWT_ALGORITHM: str = config("JWT_ALGORITHM", default="HS256")
@@ -24,7 +24,8 @@ class Settings(BaseSettings):
         "JWT_ACCESS_TOKEN_EXPIRE_MINUTES", default=15
     )
     JWT_REFRESH_TOKEN_EXPIRE_MINUTES: int = config(
-        "JWT_REFRESH_TOKEN_EXPIRE_MINUTES", default=30)
+        "JWT_REFRESH_TOKEN_EXPIRE_MINUTES", default=30
+    )
 
     # Supabase storage configuration
     SUPABASE_URL: str = config("SUPABASE_URL", default="")
@@ -69,7 +70,6 @@ class Settings(BaseSettings):
     FLUTTERWAVE_SECRET_KEY: str = config("FLUTTERWAVE_SECRET_KEY", default="")
     FLUTTERWAVE_SUCCESS_URL: str = config("FLUTTERWAVE_SUCCESS_URL", default="")
     FLUTTERWAVE_CANCEL_URL: str = config("FLUTTERWAVE_CANCEL_URL", default="")
-   
 
     # Google authentication credentials
     GOOGLE_CLIENT_ID: str = config("GOOGLE_CLIENT_ID", default="")
@@ -77,7 +77,8 @@ class Settings(BaseSettings):
     GOOGLE_REDIRECT_URI: str = config("GOOGLE_REDIRECT_URI", default="")
     GOOGLE_CONF_URL: str = config("GOOGLE_CONF_URL", default="")
     GOOGLE_REDIRECT_FRONTEND_URL: str = config(
-        "GOOGLE_REDIRECT_FRONTEND_URL", default="")
+        "GOOGLE_REDIRECT_FRONTEND_URL", default=""
+    )
 
 
 settings = Settings()

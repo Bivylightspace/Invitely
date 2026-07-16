@@ -16,6 +16,7 @@ DB_PASSWORD = quote_plus(settings.DB_PASSWORD)
 DB_NAME = settings.DB_NAME
 DB_TYPE = settings.DB_TYPE
 
+
 def get_db_url(test_mode: bool = False):
     if DB_TYPE == "sqlite" or test_mode or os.environ.get("TESTING"):
         BASE_PATH = "sqlite:///./test.db"
@@ -37,9 +38,7 @@ else:
         max_overflow=settings.DB_MAX_OVERFLOW,
     )
 
-SessionLocal = sessionmaker(
-    autocommit=False, autoflush=False, bind=sync_engine
-)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=sync_engine)
 db_session = scoped_session(SessionLocal)
 
 # **Asynchronous Engine (for new async code)**
@@ -57,7 +56,8 @@ else:
     )
 
 async_session_factory = async_sessionmaker(
-    bind=async_engine, expire_on_commit=False, class_=AsyncSession)
+    bind=async_engine, expire_on_commit=False, class_=AsyncSession
+)
 
 
 # **Legacy (Sync) Database Dependency**
@@ -69,7 +69,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
 
 
 async def get_async_db():
