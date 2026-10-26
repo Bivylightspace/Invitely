@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, UUID
+from sqlalchemy import UUID, Column, DateTime
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()

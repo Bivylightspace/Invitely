@@ -5,7 +5,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from api.db.database import check_database_connection, get_async_db
 from api.utils.responses import success_response
 from api.v1.routes import api_version_one
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
