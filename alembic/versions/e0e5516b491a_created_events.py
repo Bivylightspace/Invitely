@@ -8,8 +8,9 @@ Create Date: 2026-03-28 12:39:38.794411
 
 from typing import Sequence, Union
 
-from alembic import op
 import sqlalchemy as sa
+
+from alembic import op
 
 # revision identifiers, used by Alembic.
 revision: str = "e0e5516b491a"
@@ -42,7 +43,7 @@ def upgrade() -> None:
 
     auth_provider_enum.create(op.get_bind(), checkfirst=True)
 
-    # convert column from varchar → enum
+    # convert column from varchar -> enum
     op.alter_column(
         "auth_accounts",
         "provider",

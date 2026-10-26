@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
-from jose import jwt, JWTError
+
+from jose import JWTError, jwt
 
 SECRET_KEY = "I'M NOT TELLING"
 ALGORITHM = "HS256"

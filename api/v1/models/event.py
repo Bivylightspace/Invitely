@@ -8,9 +8,9 @@ from api.v1.models.base import Base
 from api.v1.schemas.event import EventType, Plan
 
 if TYPE_CHECKING:
-    from api.v1.models.user import User
     from api.v1.models.guest import Guest
     from api.v1.models.invite_link import InviteLink
+    from api.v1.models.user import User
 
 
 class Event(Base):

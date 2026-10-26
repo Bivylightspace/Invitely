@@ -1,5 +1,6 @@
-from sqlalchemy.orm import Session
 from fastapi import HTTPException
+from sqlalchemy.orm import Session
+
 from api.v1.models.event import Event
 from api.v1.schemas.event import EventCreate
 
