@@ -18,8 +18,8 @@ def register_user(user_data: UserCreate, db: Session):
     return new_user
 
 
-def login_user(username: str, password: str, db: Session):
-    user = db.query(User).filter(User.email == username).first()
+def login_user(email: str, password: str, db: Session):
+    user = db.query(User).filter(User.email == email).first()
     if not user or not verify_password(password, user.password):
         return None
     token = create_access_token({"sub": user.email})
