@@ -18,3 +18,13 @@ class User(Base):
     auth_accounts: Mapped[List["AuthAccount"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
+
+    @property
+    def email(self) -> Optional[str]:
+        if self.auth_accounts:
+            return self.auth_accounts[0].email
+        return None
+
+    @property
+    def username(self) -> str:
+        return self.name
