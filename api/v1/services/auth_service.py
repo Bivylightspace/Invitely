@@ -47,4 +47,13 @@ def login_user(email: str, password: str, db: Session):
     token = create_access_token(
         {"sub": auth_account.email, "user_id": str(auth_account.user_id)}
     )
-    return token
+    user = (
+        auth_account.user
+        or db.query(User).filter(User.id == auth_account.user_id).first()
+    )
+    user_data = {
+        "id": str(user.id) if user else str(auth_account.user_id),
+        "name": user.name if user and user.name else auth_account.email,
+        "email": auth_account.email,
+    }
+    return {"access_token": token, "user": user_data}

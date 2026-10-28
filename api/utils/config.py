@@ -27,10 +27,13 @@ class Settings(BaseSettings):
         "JWT_REFRESH_TOKEN_EXPIRE_MINUTES", default=30
     )
 
-    # Supabase storage configuration
+    # Supabase storage & auth configuration
     SUPABASE_URL: str = config("SUPABASE_URL", default="")
     SUPABASE_KEY: str = config("SUPABASE_KEY", default="")
     SUPABASE_SERVICE_KEY: str = config("SUPABASE_SERVICE_KEY", default="")
+    SUPABASE_PUBLISHABLE_KEY: str = config("SUPABASE_PUBLISHABLE_KEY", default="")
+    SUPABASE_SECRET_KEY: str = config("SUPABASE_SECRET_KEY", default="")
+    SUPABASE_JWKS_URL: str = config("SUPABASE_JWKS_URL", default="")
     BUCKET_NAME: str = config("BUCKET_NAME", default="Invitations")
     AVATAR_BUCKET_NAME: str = config("AVATAR_BUCKET_NAME", default="avatar")
 
