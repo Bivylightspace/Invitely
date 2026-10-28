@@ -18,6 +18,3 @@ class User(Base):
     auth_accounts: Mapped[List["AuthAccount"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
-
-    # Relationship to Events (Placeholder based on your requirements)
-    events: Mapped[List["User"]] = relationship(back_populates="owner")
